@@ -1083,7 +1083,7 @@ checkseller();
                         ),
                         filled: true,
                         hintStyle: new TextStyle(color: Colors.grey[800]),
-                        hintTextDirection: ui.TextDirection.rtl,
+                       // hintTextDirection: ui.TextDirection.rtl,
                         hintText: "أكتب تعليقك...",
                         fillColor: Colors.white70),
                     controller: addcomment,
