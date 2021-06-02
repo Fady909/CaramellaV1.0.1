@@ -74,6 +74,8 @@ class _SellerInsertState extends State<SellerInsert> {
   List<dynamic> currentColors = [];
   List<String> colorlist = [];
 
+  var c;
+
   void changeColor(Color color) {
 
 
@@ -710,6 +712,7 @@ else if (pdisount != null )
 
 
   model.changeisLoading(false);
+
 
 
   }

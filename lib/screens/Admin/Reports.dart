@@ -314,9 +314,9 @@ return    Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
 
-
-                                  Text(sellerreports[index].TotalProducts.toString()),
                                   Text(sellerreports[index].ProductsSold.toString()),
+                                  Text(sellerreports[index].TotalProducts.toString()),
+
                                   GestureDetector(
                                       onTap: (){
 

@@ -219,107 +219,109 @@ print(adminpercentage);
 
 
                 return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Center(child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Center(child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
 
-                        children: [
+                          children: [
 
-                          Text('سعر المنتجات'),
-                        ],),),
-                      SizedBox(height: 10),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: sellerreports.length,
+                            Text('سعر المنتجات'),
+                          ],),),
+                        SizedBox(height: 10),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: sellerreports.length,
 
-                        itemBuilder: (context, index) {
-                          return   Center(
+                          itemBuilder: (context, index) {
+                            return   Center(
 
-                              child :   Column(
-                                children: [
-                                  SizedBox(height: 10),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-
-
-                                      Center(child: Text(sellerreports[index].Cash)),
-
-                                    ],),
-                                  SizedBox(height: 10),
-
-                                ],
-
-                              ));
-
-                        },
-                      ),
-                      Divider(thickness: 2,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-
-                      Text(x.toString()),
-                        Text("المجموع الكلي"),
+                                child :   Column(
+                                  children: [
+                                    SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
 
 
-                      ],)
-                      ,
-                      SizedBox(height: 10,),
-                      Divider(thickness: 2,),
+                                        Center(child: Text(sellerreports[index].Cash)),
 
+                                      ],),
+                                    SizedBox(height: 10),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                                  ],
 
-                          Text(adminpercentage.toString()+'%'),
-                          Text("نسبة الأدمن"),
-                          GestureDetector(
-                              onTap: (){
+                                ));
 
-                                _emptyalert(context,'', '');
-                              },
-                              child: Icon(Icons.edit))
+                          },
+                        ),
+                        Divider(thickness: 2,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
+                        Text(x.toString()),
+                          Text("المجموع الكلي"),
 
 
                         ],)
+                        ,
+                        SizedBox(height: 10,),
+                        Divider(thickness: 2,),
+
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
+                            Text(adminpercentage.toString()+'%'),
+                            Text("نسبة الأدمن"),
+                            GestureDetector(
+                                onTap: (){
+
+                                  _emptyalert(context,'', '');
+                                },
+                                child: Icon(Icons.edit))
+
+
+                          ],)
 ,
-                      SizedBox(height: 10,),
-                      Divider(thickness: 2,),
+                        SizedBox(height: 10,),
+                        Divider(thickness: 2,),
 
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
 
-                          Text(shopworth.toString()),
-                          Text("مكسب المتجر"),
-
-
-                        ],),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-
-                          Text(adminworth.toString()),
-                          Text("مكسب الادمن"),
+                            Text(shopworth.toString()),
+                            Text("مكسب المتجر"),
 
 
-                        ],)
+                          ],),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
+                            Text(adminworth.toString()),
+                            Text("مكسب الادمن"),
 
 
-
+                          ],)
 
 
 
 
-                    ],              ),
+
+
+
+                      ],              ),
+                  ),
                 );
 
 
