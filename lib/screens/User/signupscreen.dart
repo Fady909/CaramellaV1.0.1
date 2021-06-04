@@ -206,7 +206,7 @@ class _SignupscreenState extends State<Signupscreen> {
     ),
     TextField(
       keyboardType: TextInputType.phone,
-      maxLength: 7,
+      maxLength: 15,
     obscureText: false,
     decoration: InputDecoration(
     prefix: Text("+2"),
@@ -571,10 +571,11 @@ if (isValid == false){{
   Future<void> verifyPhoneNumber() async {
     try {
       await _auth.verifyPhoneNumber(
-          phoneNumber: '+962${phone.text}',
+          phoneNumber: '+2${phone.text}',
           timeout: const Duration(seconds: 30),
           verificationCompleted: (val) {
             verifycode = val.smsCode;
+
           },
           verificationFailed: (val) {
             print("verification failed val = $val");
@@ -592,6 +593,7 @@ if (isValid == false){{
           codeAutoRetrievalTimeout: (val) {
             print("code auto retrieval timeout val = $val");
           });
+
     } catch (e) {
       print("Failed to Verify Phone Number: ${e}");
     }
