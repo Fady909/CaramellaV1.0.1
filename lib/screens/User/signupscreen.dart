@@ -575,7 +575,7 @@ if (isValid == false){{
           timeout: const Duration(seconds: 30),
           verificationCompleted: (val) {
             verifycode = val.smsCode;
-
+print ('code'+ val.smsCode);
           },
           verificationFailed: (val) {
             print("verification failed val = $val");
@@ -589,6 +589,8 @@ if (isValid == false){{
                 backgroundColor: kdark,
                 textColor: Colors.white,
                 fontSize: 16.0);
+            print('verficatioUD     '+ _verificationId + verificationId + " verfviccation COde    "+ verifycode );
+
           },
           codeAutoRetrievalTimeout: (val) {
             print("code auto retrieval timeout val = $val");

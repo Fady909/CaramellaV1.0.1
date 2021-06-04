@@ -2781,37 +2781,6 @@ Navigator.of(context).pushReplacementNamed(LoginScreen.id);
       fcm.requestNotificationPermissions();
       fcm.configure(
         onMessage: (Map<String, dynamic> message) async {
-          showDialog(
-            context: context,
-            builder: (context) =>
-
-
-                AlertDialog(
-                  content: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          width: 3.0
-                      ),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5.0) //                 <--- border radius here
-                      ),
-                    ),
-                    height: 120,
-                    child: Column(
-                      children: [
-                        Icon(Icons.notification_important,size: 50, color: klight,),
-
-                        Text(message['notification']['title']),
-
-                        Text(message['notification']['body']),
-
-                      ],
-
-                    ),
-                  ),
-
-                ),
-          );
 
 
 
