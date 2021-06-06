@@ -384,9 +384,8 @@ class _SignupscreenState extends State<Signupscreen> {
         Navigator.pushNamed(context, Home.id);
       } catch (e) {
         model.changeisLoading(false);
+print (e.toString()+'لخطااا  + ');
 
-        Scaffold.of(context).showSnackBar(
-            SnackBar(backgroundColor: Colors.yellow, content: Text(e.message)));
       }
   }
 
@@ -499,14 +498,21 @@ if (isValid == false){{
                         backgroundColor: kdark,
                         textColor: Colors.white,
                         fontSize: 16.0)
-                        : Fluttertoast.showToast(
-                        msg: "الكود المدخل خطأ",
+                        : verifycode == null ?  Fluttertoast.showToast(
+                        msg: "الكود المدخل فارغ",
                         toastLength: Toast.LENGTH_SHORT,
                         gravity: ToastGravity.BOTTOM,
                         timeInSecForIosWeb: 1,
                         backgroundColor: kdark,
                         textColor: Colors.white,
-                        fontSize: 16.0),
+                        fontSize: 16.0) : Fluttertoast.showToast(
+    msg: "خطأأ",
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    backgroundColor: kdark,
+    textColor: Colors.white,
+    fontSize: 16.0),
                     color: kdark),
               ],
               content: Column(
