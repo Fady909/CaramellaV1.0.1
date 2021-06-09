@@ -56,10 +56,10 @@ class _AuthPhoneState extends State<AuthPhone> {
                 children: <Widget>[
                   TextFormField(
                     keyboardType: TextInputType.phone,
-                    maxLength: 15,
+                    maxLength: 9,
                     obscureText: false,
                     decoration: InputDecoration(
-                        prefix: Text("+2"),
+                        prefix: Text("+962"),
                         border: InputBorder.none,
                         labelText: 'رقم الهاتف  (+xx xxx-xxx-xxxx)',
                         fillColor: Color(0xfff3f3f4),
@@ -121,7 +121,7 @@ class _AuthPhoneState extends State<AuthPhone> {
   Future<void> verifyPhoneNumber( _context) async {
     try {
       await _auth.verifyPhoneNumber(
-          phoneNumber: '+2${_phoneNumberController.text}',
+          phoneNumber: '+962${_phoneNumberController.text}',
           timeout: const Duration(seconds: 100),
           verificationCompleted: verificationCompleted,
           verificationFailed: verificationFailed,
@@ -204,10 +204,10 @@ class _AuthPhoneState extends State<AuthPhone> {
           await firestore
               .collection('Sellers')
               .doc(
-            '+2${_phoneNumberController.text}'.trim(),
+            '+962${_phoneNumberController.text}'.trim(),
           )
               .update({
-            'Phone': '+2${_phoneNumberController.text}'.trim(),
+            'Phone': '+962${_phoneNumberController.text}'.trim(),
           }))
 
 
@@ -263,10 +263,10 @@ class _AuthPhoneState extends State<AuthPhone> {
  ).then((value) async =>  await firestore
      .collection('Sellers')
      .doc(
-   '+2${_phoneNumberController.text}'.trim(),
+   '+962${_phoneNumberController.text}'.trim(),
  )
      .update({
-   'Phone': '+2${_phoneNumberController.text}'.trim(),
+   'Phone': '+962${_phoneNumberController.text}'.trim(),
  }))
 
 
