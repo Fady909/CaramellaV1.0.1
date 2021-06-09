@@ -22,6 +22,7 @@ import 'package:permission_handler/permission_handler.dart' as handler;
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_eapp/screens/User/AuthPhone.dart';
 
 import 'home.dart';
 
@@ -33,6 +34,8 @@ String username = ' Default';
 String Email = 'default';
 String phone = ' ';
 String isemailver ;
+String isphonever ;
+
 String Photo  = 'https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg';
 String pincode = ' ';
 String address = ' ';
@@ -53,6 +56,8 @@ class UserInfo1 extends StatefulWidget {
   String ulat;
   String ulong;
   String emailverified;
+  String phoneverified;
+
   String uphoto = 'https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg';
   _UserInfo1State createState() => _UserInfo1State();
 
@@ -65,6 +70,7 @@ class _UserInfo1State extends State<UserInfo1>  with SingleTickerProviderStateMi
   final FocusNode myFocusNode = FocusNode();
 
   String verifiationstatus="تأكيد؟";
+  String phoneverifiationstatus="تأكيد؟";
 
   get name => widget.name;
   final FirebaseAuth fireauth = FirebaseAuth.instance;
@@ -367,12 +373,31 @@ class _UserInfo1State extends State<UserInfo1>  with SingleTickerProviderStateMi
                                             .start,
                                         mainAxisSize: MainAxisSize.min,
                                         children: <Widget>[
-                                          new Text(
-                                            'Mobile',
-                                            style: TextStyle(
-                                                fontSize: 16.0,
-                                                fontWeight: FontWeight.bold),
-                                          ),
+                                          new Row(
+
+                                            children: [
+                                              Text(
+                                                'Phone '
+                                                ,
+                                                style: TextStyle(
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+
+                                              fireauth.currentUser.phoneNumber == null ? GestureDetector(
+                                                  onTap: (){
+                                                    Navigator.pushNamed(context, AuthPhone.id);
+
+
+                                                  },
+                                                  child: Text( phoneverifiationstatus= "تأكيد؟" ,style: TextStyle(color: Colors.red) ,)):
+
+
+                                              Text(phoneverifiationstatus= "مؤكد", style: TextStyle(color: Colors.green))
+
+
+
+                                            ],)
                                         ],
                                       ),
                                     ],
@@ -390,7 +415,7 @@ class _UserInfo1State extends State<UserInfo1>  with SingleTickerProviderStateMi
                                               labelText: phone,
 
                                             ),
-                                            enabled: !_status,
+                                            enabled: fireauth.currentUser.phoneNumber == null ? !_status : false,
                                             // ignore: missing_return
                                             validator: (value) {
                                               if (value.isNotEmpty)  {
@@ -506,11 +531,15 @@ class _UserInfo1State extends State<UserInfo1>  with SingleTickerProviderStateMi
                     padding: EdgeInsets.only(left: 20.0, right: 10.0),
                     height: 200,
                     width: 500,
-                    child: Text("Chosen address : " + address))
+                    child: Text("Chosen address : " + address)),
+
+
+
                     ],
 
 
-          ),
+
+                  ),
                 ],
               ),
             ),
@@ -743,6 +772,7 @@ setState(() {
         widget.upin = snapshot.get('AreaCode').toString();
         widget.uphoto = snapshot.get('photo').toString();
         widget.emailverified = snapshot.get("emailverified").toString();
+        widget.phoneverified = snapshot.get("phoneverified").toString() != null ? snapshot.get("phoneverified").toString() : "No";
 
 
 
@@ -766,6 +796,7 @@ setState(() {
     pincode = widget.upin;
     Photo = widget.uphoto;
     isemailver = widget.emailverified;
+    isphonever = widget.phoneverified;
   }
 
 

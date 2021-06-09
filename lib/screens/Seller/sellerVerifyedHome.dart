@@ -392,7 +392,7 @@ body: StreamBuilder<QuerySnapshot>(
                   onTap: () {},
                   child: GestureDetector(
                     child: Text(
-                      "فقد منتجاتك",
+                      "تفقد منتجاتك",
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -473,7 +473,7 @@ body: StreamBuilder<QuerySnapshot>(
                     color: blackColor)),
             onTap: () {
 
-              Navigator.of(context).pushReplacementNamed(SellerProfile.id);
+              Navigator.of(context).pushNamed(SellerProfile.id);
 
             },
           ),

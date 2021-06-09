@@ -566,7 +566,7 @@ Navigator.of(context).pushNamed(UserOrders.id);
                       fontWeight: FontWeight.w600,
                       color: blackColor)),
               onTap: () {
-                Navigator.pushReplacementNamed(context, UserInfo1.id);
+                Navigator.pushNamed(context, UserInfo1.id);
               },
             ),
 
@@ -580,7 +580,7 @@ Navigator.of(context).pushNamed(UserOrders.id);
               onTap: () {
 
                 {
-                  Navigator.pushReplacementNamed(context, PointsPage.id);                }
+                  Navigator.pushNamed(context, PointsPage.id);                }
 
               },
             ),
@@ -1183,36 +1183,15 @@ Navigator.of(context).pushNamed(UserOrders.id);
 
 
 
-                SizedBox(height: 30),
 
+                Text("   العروض المميزه   ",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontFamily: 'Tajawal',
 
-
-
-
-
-
-                SizedBox(height: 30),
-
-    GestureDetector(
-      onTap: (){
-
-        store.callOnFcmApiSendPushNotifications(
-
-          "dFl8CmGVQWqGkQkbmRX1ZN:APA91bHhBUNQydyKNMTy95O1Lh14uvDCOE0SKomAxhijN9BZska4Evn3ONjVLDUvNhMPP2nd1IPmlNYKAYa-QGwpRjrZN25EzvOUwhbY2jx_3DQCNG7mJxHzjAhb3U9dnEqoGP9bHOpk" , "لديك منتج تم طلبه", "    مبروك  ");
-
-
-
-      }
-,
-      child: Text("   العروض المميزه   ",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontFamily: 'Tajawal',
-
-                          fontWeight: FontWeight.bold)),
-                ),
+                        fontWeight: FontWeight.bold)),
                 SizedBox(height: 30),
 
 

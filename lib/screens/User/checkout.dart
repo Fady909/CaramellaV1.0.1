@@ -166,6 +166,49 @@ class _CheckoutState extends State<Checkout> {
                             title: Text('الدفع عند الاستلام'),
                           ),
                         ),
+                        Text("الرقم أو الأيميل مؤكد؟"),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 12.0),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(8.0)),
+                            color:
+                            fireauth1.currentUser.phoneNumber != null  || fireauth1.currentUser.emailVerified ?
+                            Color(0xFFE7F9F5): Colors.red,
+                            border: Border.all(
+                              color: Color(0xFF4CD7A5),
+                            ),
+                          ),
+                          child: ListTile(
+                            trailing: Icon(
+                              fireauth1.currentUser.phoneNumber != null  || fireauth1.currentUser.emailVerified ?
+
+
+                              Icons.check_circle  : Icons.not_interested,
+                              color: Color(0xFF10CA88),
+
+                            ),
+                            leading: Icon(
+
+
+
+                              Icons.verified,
+                              color: Color(0xFF10CA88),
+                            ),
+                            title:
+
+
+
+                            Text(
+                                fireauth1.currentUser.phoneNumber != null  || fireauth1.currentUser.emailVerified ?
+
+                                'الحساب مفعل'  : "من فضلك قم بالتفعيل أما عن طريق الهاتف أو الأيميل" ),
+                          ),
+                        ),
+
+
+
+
                         // Container(
                         //   margin: EdgeInsets.symmetric(vertical: 12.0),
                         //   decoration: BoxDecoration(
@@ -195,7 +238,7 @@ class _CheckoutState extends State<Checkout> {
                                 ? Color(0xFFF93963)
                                 : Colors.grey,
                             onPressed: () => {
-                              if (widget.isButtonDisabled == false)
+                              if (widget.isButtonDisabled == false && fireauth1.currentUser.phoneNumber != null || fireauth1.currentUser.emailVerified )
                                 {
                                   addorder()
                                       .then((value) => clearCart(context))
@@ -213,93 +256,22 @@ class _CheckoutState extends State<Checkout> {
                                 }
                               else if (widget.isButtonDisabled = true)
                                 {
-                                  // showDialog(
-                                  //   context: context,
-                                  //   // ignore: deprecated_member_use
-                                  // /*
-                                  //   child: AlertDialog(
-                                  //     shape: RoundedRectangleBorder(
-                                  //         borderRadius: BorderRadius.all(
-                                  //             Radius.circular(16.0))),
-                                  //     content: Container(
-                                  //       height: MediaQuery.of(context).size.height /
-                                  //           1.8,
-                                  //       child: Column(
-                                  //         crossAxisAlignment:
-                                  //             CrossAxisAlignment.center,
-                                  //         children: <Widget>[
-                                  //           Icon(
-                                  //             Icons.error_outline,
-                                  //             size: 96,
-                                  //             color: Colors.red,
-                                  //           ),
-                                  //           Padding(
-                                  //             padding: const EdgeInsets.symmetric(
-                                  //                 vertical: 16.0),
-                                  //             child: Text(
-                                  //               "من فضلك حدث بياناتك",
-                                  //               style: TextStyle(fontSize: 20),
-                                  //             ),
-                                  //           ),
-                                  //           Padding(
-                                  //             padding: const EdgeInsets.symmetric(
-                                  //                 vertical: 16.0),
-                                  //           ),
-                                  //           FlatButton(
-                                  //             shape: RoundedRectangleBorder(
-                                  //               borderRadius:
-                                  //                   BorderRadius.circular(4.0),
-                                  //             ),
-                                  //             color: Color(0xFFF93963),
-                                  //             onPressed: () => {},
-                                  //             child: Container(
-                                  //               padding: EdgeInsets.symmetric(
-                                  //                 vertical: 15.0,
-                                  //                 horizontal: 10.0,
-                                  //               ),
-                                  //               child: Row(
-                                  //                 mainAxisAlignment:
-                                  //                     MainAxisAlignment.center,
-                                  //                 children: <Widget>[
-                                  //                   Expanded(
-                                  //                     child: InkWell(
-                                  //                       onTap: () {
-                                  //                         Nav.route(
-                                  //                             context, Home());
-                                  //                       },
-                                  //                       child: Text(
-                                  //                         "أكمل التسوق",
-                                  //                         textAlign:
-                                  //                             TextAlign.center,
-                                  //                         style: TextStyle(
-                                  //                             color: Colors.white,
-                                  //                             fontWeight:
-                                  //                                 FontWeight.bold),
-                                  //                       ),
-                                  //                     ),
-                                  //                   ),
-                                  //                 ],
-                                  //               ),
-                                  //             ),
-                                  //           ),
-                                  //           FlatButton(
-                                  //             child: Text("اذهب الي الملف الشخصي"),
-                                  //             onPressed: () {
-                                  //               Navigator.push(
-                                  //                 context,
-                                  //                 PageTransition(
-                                  //                   type: PageTransitionType.fade,
-                                  //                   child: AccountSettings(),
-                                  //                 ),
-                                  //               );
-                                  //             },
-                                  //           ),
-                                  //         ],
-                                  //       ),
-                                  //     ),
-                                  //   ),
-                                  // */
-                                  // ),
+
+                                Fluttertoast.showToast(
+                                msg: "من فضلك حدث بياناتك أولاً",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: kdark,
+                                textColor: Colors.white,
+                                fontSize: 16.0)
+
+
+
+                                
+
+
+
                                 }
                             },
                             child: Container(

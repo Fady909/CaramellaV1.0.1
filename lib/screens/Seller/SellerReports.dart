@@ -256,7 +256,7 @@ class _SellerReportsforsellerState extends State<SellerReportsforseller> {
     Padding(
     padding: const EdgeInsets.all(10.0),
     child: Container(
-    height: 200,
+    height: 500,
     child: StreamBuilder<QuerySnapshot>(
     stream: store.loadselelrscashAlltime(loggeduser.uid),
     // ignore: missing_return

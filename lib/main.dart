@@ -33,6 +33,8 @@ import 'package:flutter_eapp/screens/User/UserProfile.dart';
 import 'package:flutter_eapp/screens/User/checkout.dart';
 import 'package:flutter_eapp/screens/User/favouriteItems.dart';
 import 'package:flutter_eapp/screens/User/home.dart';
+import 'package:flutter_eapp/screens/User/AuthPhone.dart';
+
 import 'package:flutter_eapp/screens/User/loginsccreen.dart';
 import 'package:flutter_eapp/screens/User/points.dart';
 import 'package:flutter_eapp/screens/User/product.dart';
@@ -121,6 +123,7 @@ class MyApp extends StatelessWidget  {
             SellerReportsforseller.id:(BuildContext context)=> SellerReportsforseller(),
             SellerProfile.id:(BuildContext context)=> SellerProfile(),
             ShowHome.id :(BuildContext context)=> ShowHome(),
+            AuthPhone.id : (BuildContext context)=> AuthPhone(),
           }
 
 

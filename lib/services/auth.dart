@@ -2,6 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 final _auth = FirebaseAuth.instance;
 
+class FireBase {
+  static FirebaseAuth auth = FirebaseAuth.instance;
+
+  static instantiate(){
+
+  }
+}
 
 class Auth {
 
@@ -43,5 +50,9 @@ class Auth {
     await prefs.setString('email', email);
     await prefs.setString("passord", password);
   }
+
+
+
+
 
 }

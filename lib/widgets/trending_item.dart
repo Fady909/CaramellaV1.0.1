@@ -46,7 +46,7 @@ class _TrendingItemState extends State<TrendingItem> {
                 {
                   List<Product> products = [];
 
-                  for (var doc in snapshot.data.docs) {
+                 for (var doc in snapshot.data.docs) {
                     var data = doc.data();
                     products.add(Product(
                       doc.id,
@@ -73,8 +73,9 @@ class _TrendingItemState extends State<TrendingItem> {
                   }
 
 
-
-                  return ListView.builder(
+                  return
+                    products.length != 0 ?
+                        ListView.builder(
 
                     scrollDirection: Axis.horizontal,
                     itemCount: products.length,
@@ -195,8 +196,8 @@ class _TrendingItemState extends State<TrendingItem> {
                                 );
                               }         ));
                     },
-                  );
-
+                  )
+: Container();
 
 
 
