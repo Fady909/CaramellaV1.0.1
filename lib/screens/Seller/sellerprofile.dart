@@ -69,6 +69,7 @@ class _SellerProfileState extends State<SellerProfile> {
       inAsyncCall: Provider.of<Modelhut>(context).isLoading,
 
       child: Scaffold(
+
         backgroundColor:  Colors.white,
         appBar: AppBar(
           title: Text(
@@ -347,6 +348,9 @@ class _SellerProfileState extends State<SellerProfile> {
 
   @override
   void initState() {
+    final model = Provider.of<Modelhut>(context, listen: false);
+    model.changeisLoading(false);
+
     getAdminData();
   }
 

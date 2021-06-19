@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_eapp/models/Categories.dart';
 import 'package:flutter_eapp/models/Product.dart';
-import 'dart:convert';
 import 'package:flutter_eapp/models/Sellers.dart';
 import 'package:flutter_eapp/models/SubCategories.dart';
 import 'package:flutter_eapp/screens/User/CatandSubcat.dart';
@@ -30,10 +29,9 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:screen_size_test/screen_size_test.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../constants.dart';
 import 'SubCategoryPage.dart';
 
@@ -70,6 +68,8 @@ class _HomeState extends State<Home> {
   bool visable = false;
 
   String token;
+
+  String UID;
   @override
   Widget build(BuildContext context) {
     var mywidth = MediaQuery.of(context).size.width;
@@ -80,48 +80,17 @@ class _HomeState extends State<Home> {
 
 
     return  Scaffold(key: _scaffoldKey,
-backgroundColor: Colors.white,
-        appBar: buildAppBar(context) ,
-        drawer: Drawer(child: leftDrawerMenu()),
+        backgroundColor: Colors.white,
+        appBar: UID != null? buildAppBar(context) : buildanybar(context) ,
+        drawer: UID != null? Drawer(child: leftDrawerMenu()) : null,
         body: Test(myheight, mywidth));}
 
   @override
   void initState() {
+
+
+
     requestper();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     checkgeneralcoupon();
     getData();
 super.initState();
@@ -252,7 +221,7 @@ super.initState();
 
 
 
-    String UID = loggeduser.uid;
+     UID = loggeduser.uid;
     await prefs.setString('UID', UID);
 
     final DocumentReference document = Firestore.instance.collection('Users')
@@ -366,6 +335,56 @@ snapshot.get('photo').toString() == null || snapshot.get('photo').toString()==""
 
     );
   }
+  AppBar buildanybar(BuildContext context) {
+
+    return AppBar(
+      backgroundColor: kdark,
+      title:RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+            text: 'Ca',
+            style: GoogleFonts.portLligatSans(
+              textStyle: Theme.of(context).textTheme.display1,
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+            children: [
+              TextSpan(
+                text: 'ram',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              TextSpan(
+                text: 'ella',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+            ]),
+      ),
+      actions: <Widget>[
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.fade,
+                child: LoginScreen(),
+              ),
+            );
+          },
+          child: Center(child: Text('تسجيل الدخول؟'))
+        ),
+
+
+
+
+      ],
+
+
+
+    );
+  }
+
+
 
   leftDrawerMenu() {
 
@@ -765,7 +784,7 @@ Navigator.of(context).pushNamed(UserOrders.id);
                     mainAxisAlignment:MainAxisAlignment.end ,
                     children: [
                       Icon(Icons.arrow_back_ios),
-                      Text("المتاجر -     ",
+                      Text("المتاجر      ",
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               color: Colors.black,
@@ -1195,7 +1214,7 @@ Navigator.of(context).pushNamed(UserOrders.id);
                 SizedBox(height: 30),
 
 
-                TrendingItem( ),
+                TrendingItem(),
 
                 SizedBox(height: 20),
 
@@ -1284,7 +1303,7 @@ Navigator.of(context).pushNamed(UserOrders.id);
                                                           Container(
                                                             width: trendCardWidth,
                                                             child: Padding(
-                                                              padding: const EdgeInsets.only(bottom: 4.0),
+                                                              padding: const EdgeInsets.only(bottom: 1.0),
                                                               child: ClipShadowPath(
                                                                 shadow: Shadow(blurRadius: 1, color: klight),
                                                                 clipper: TrendingItemsClipper(rectWidth, rectHeight),
@@ -1292,52 +1311,47 @@ Navigator.of(context).pushNamed(UserOrders.id);
                                                                   elevation: 0,
                                                                   color: Colors.white,
                                                                   child: Padding(
-                                                                    padding: const EdgeInsets.all(5.0),
-                                                                    child: Column(
-                                                                      children: <Widget>[
-                                                                        Row(
-                                                                          children: <Widget>[
-                                                                            Card(
-                                                                              color: Colors.black,
-                                                                              child: Padding(
-                                                                                padding: const EdgeInsets.all(2.0),
-                                                                                /*
-                                                    child: Text(
-                                                      '${product.remainingQuantity} left',
-                                                      style: TextStyle(
-                                                          color: Colors.white, fontSize: 12.0),
-                                                    ),
-                                                  */
+                                                                    padding: const EdgeInsets.all(4.0),
+                                                                    child: SingleChildScrollView(
+                                                                      child: Column(
+                                                                        children: <Widget>[
+                                                                          Row(
+                                                                            children: <Widget>[
+                                                                              Card(
+                                                                                color: Colors.black,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(1.0),
 
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                            Spacer(),
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.only(bottom: 5),
-                                                                              child: Container(
-                                                                                width: 50,
-                                                                                height: 30,
-                                                                                child: Card(
-                                                                                  elevation: 6,
-                                                                                  color: klight,
-                                                                                  child: Center(
-                                                                                    child: Text(
-                                                                                      "وصل حديثا" ,
-                                                                                      style: TextStyle(
-                                                                                          fontSize: 10,
-                                                                                          color: Colors.black,
-                                                                                          fontWeight: FontWeight.bold),
+                                                                              Spacer(),
+                                                                              Padding(
+                                                                                padding: const EdgeInsets.only(bottom: 5),
+                                                                                child: Container(
+                                                                                  width: 50,
+                                                                                  height: 30,
+                                                                                  child: Card(
+                                                                                    elevation: 6,
+                                                                                    color: klight,
+                                                                                    child: Center(
+                                                                                      child: Text(
+                                                                                        "وصل حديثا" ,
+                                                                                        style: TextStyle(
+                                                                                            fontSize: 10,
+                                                                                            color: Colors.black,
+                                                                                            fontWeight: FontWeight.bold),
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                        _productImage(products[index].Productimage),
-                                                                        _productDetails(products[index].Productname,products[index].Productprice , products[index].productDiscount),
+                                                                            ],
+                                                                          ),
+                                                                          _productImage(products[index].Productimage),
+                                                                          _productDetails(products[index].Productname,products[index].Productprice , products[index].productDiscount),
 
-                                                                      ],
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1352,8 +1366,10 @@ Navigator.of(context).pushNamed(UserOrders.id);
                                                                 clipper: CartIconClipper(rectWidth, rectHeight),
                                                                 child: GestureDetector(
                                                                   onTap: (){
+                          UID != null?
+                                                                    store.additemtocart(products[index] , context, products[index].pID):
+                          stopcart(context, "","من فضلك قم بتسجيل الدخول أولاً");
 
-                                                                    store.additemtocart(products[index] , context, products[index].pID);
 
                                                                   },
                                                                   child: Container(
@@ -1536,8 +1552,9 @@ Navigator.of(context).pushNamed(UserOrders.id);
                                                 clipper: CartIconClipper(rectWidth, rectHeight),
                                                 child: GestureDetector(
                                                   onTap: (){
-
-                                                    store.additemtocart(products[index] , context, products[index].pID);
+UID != null?
+                                                    store.additemtocart(products[index] , context, products[index].pID)
+:                          stopcart(context, "","من فضلك قم بتسجيل الدخول أولاً");
 
                                                   },
                                                   child: Container(
@@ -2843,6 +2860,42 @@ Navigator.of(context).pushReplacementNamed(LoginScreen.id);
 
 
 
+  }
+
+  stopcart(BuildContext context , title, desc) {
+    var alertStyle = AlertStyle(
+      animationType: AnimationType.shrink,
+      isCloseButton: false,
+      isOverlayTapDismiss: false,
+      descStyle: TextStyle(fontWeight: FontWeight.bold),
+      animationDuration: Duration(milliseconds: 250),
+      alertBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        side: BorderSide(
+          color: Colors.grey,
+        ),
+      ),
+      titleStyle: TextStyle(
+          color: klight
+      ),
+    );
+    Alert(
+      context: context,
+      style: alertStyle,
+      title: title,
+      desc:desc,
+      buttons: [
+        DialogButton(
+            child: Text(
+              "موافق",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            color: kdark
+        ),
+
+      ],
+    ).show();
   }
 
 

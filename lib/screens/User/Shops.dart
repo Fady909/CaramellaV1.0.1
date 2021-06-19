@@ -89,7 +89,7 @@ bannerlink                      ,
             backgroundColor: Colors.transparent,
             title: Column(
               children: [
-                SizedBox(height: 20,),
+                SizedBox(height: 25,),
                 Row(children: [
                   CircleAvatar(
                     backgroundColor: Colors.white,
@@ -100,7 +100,7 @@ bannerlink                      ,
                       size: 20.0,
                     ),
                   ),
-                  SizedBox(width: 20,),
+                  SizedBox(width: 10,),
                   Text(widget.sellerShop.toString()),
                   SizedBox(width: 20,),
                   Card(
@@ -114,15 +114,6 @@ bannerlink                      ,
                             if (widget.follow == "متابعه") {
                               store.followStore(
                                   context, widget.sellerShop, widget.sellerID, int.parse(followers));
-                              Fluttertoast.showToast(
-                                  msg: "تم متابعة المتجر بنجاح",
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: kdark,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0
-                              );
 
                               setState(() {
 

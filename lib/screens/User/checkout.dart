@@ -384,8 +384,8 @@ class _CheckoutState extends State<Checkout> {
         widget.email = snapshot.get('Email').toString();
         widget.uaddress = snapshot.get('Address').toString();
         widget.uphone = snapshot.get('Phone').toString();
-        widget.ulat = snapshot.get("lat").toString();
-        widget.ulong = snapshot.get('long').toString();
+        widget.ulat = snapshot.get("lat").toString()!= null ? snapshot.get("lat").toString() : null;
+        widget.ulong = snapshot.get('long').toString()!= null ? snapshot.get('long').toString() : null;;
         widget.token = snapshot.get('token').toString();
       });
     }).whenComplete(() => prefs

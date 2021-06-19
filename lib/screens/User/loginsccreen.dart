@@ -293,78 +293,104 @@ var emailcontroller = TextEditingController();
       child: Scaffold(
           body: Container(
             height: height,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                    top: -height * .15,
-                    right: -MediaQuery.of(context).size.width * .4,
-                    child: BezierContainer()),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(height: height * .2),
-                        _title(),
-                        SizedBox(height: 50),
-                        _emailPasswordWidget(),
-                        SizedBox(height: 20),
-                        _submitButton(),
-
-                       Row(children: [
-
-                         Expanded(
-
-                           child: CheckboxListTile(
-                             title: Text("تسجيل دخول تلقائي؟"),
-                             value: checkedValue,
-                             onChanged: (newValue) {
-                               setState(() {
-                                 checkedValue = newValue;
-                               });
-                             },
-                             controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
-                           ),
-                         ),
-
-                         GestureDetector(
-                           onTap: (){
-                             resetpassword();
-
-                           },
-                           child: Container(
-                             padding: EdgeInsets.symmetric(vertical: 10),
-                             alignment: Alignment.centerRight,
-                             child: Text('استرجاع كلمه السر؟',
-                                 style: TextStyle(
-                                     fontSize: 14, fontWeight: FontWeight.w500)),
-                           ),
-                         ),
+            child: SingleChildScrollView(
+              child: Column(children: [
 
 
-                       ],)
-,
-                        //_facebookButton(),
-                        SizedBox(height: height * 0.1),
+                Stack(
+                  children: <Widget>[
+                    Positioned(
+                        top: -height * .15,
+                        right: -MediaQuery.of(context).size.width * .4,
+                        child: BezierContainer()),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(height: height * .2),
+                            _title(),
+                            SizedBox(height: 50),
+                            _emailPasswordWidget(),
+                            SizedBox(height: 20),
+                            _submitButton(),
+
+                            Row(children: [
+
+                              Expanded(
+
+                                child: CheckboxListTile(
+                                  title: Text("تسجيل دخول تلقائي؟"),
+                                  value: checkedValue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      checkedValue = newValue;
+                                    });
+                                  },
+                                  controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                                ),
+                              ),
+
+                              GestureDetector(
+                                onTap: (){
+                                  resetpassword();
+
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 10),
+                                  alignment: Alignment.centerRight,
+                                  child: Text('استرجاع كلمه السر؟',
+                                      style: TextStyle(
+                                          fontSize: 14, fontWeight: FontWeight.w500)),
+                                ),
+                              ),
 
 
-
-
-
-
+                            ],)
+                            ,
+                            //_facebookButton(),
+                            SizedBox(height: height * 0.1),
 
 
 
-                        _createAccountLabel(),
-                      ],
+
+
+
+
+
+
+                            _createAccountLabel(),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                    //  Positioned(top: 40, left: 0, child: _backButton()),
+                  ],
                 ),
-              //  Positioned(top: 40, left: 0, child: _backButton()),
-              ],
-            ),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, Home.id);
+
+                  },
+                  child: Padding(
+  padding: EdgeInsets.all(20),
+  child:   Row(children: [
+
+
+
+  Text('تصفح بدون تسجل الدخول؟'),
+
+    Icon(Icons.keyboard_return, color: Colors.black,),
+
+
+
+  ],),
+),
+                )
+              ],),
+            )
           )),
     );
   }

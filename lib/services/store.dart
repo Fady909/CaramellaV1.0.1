@@ -452,9 +452,11 @@ class Store {
 
 
   additemtocart(Product products, context, DocumentID, {amount,coorlist}) async {
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String userUID = prefs.getString('UID');
 
+fireauth.currentUser == null ? _emptyalert(context, "لا يمكن اضافة المنتج إلا بعد تسجيل الدخول", ""):
 
     firestore.collection('Users').doc(userUID).collection('CartItems').doc(
         DocumentID).set(
@@ -476,7 +478,10 @@ class Store {
         }
 
 
-    ).catchError(print).whenComplete(() => _alert(context));
+    ).catchError(print).then((e) => _alert(context));
+
+
+
   }
 
 
@@ -624,7 +629,7 @@ class Store {
   followStore(context, sellername, sellerID, number) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String userUID = prefs.getString('UID');
-
+    fireauth.currentUser == null ? _emptyalert(context, "لا يمكن متابعة المتجر إلا بعد تسجيل الدخول", ""):
     firestore.collection('Users').doc(userUID).collection('Stores').doc(
         sellerID).set(
         { ksellername: sellername,
@@ -636,7 +641,21 @@ class Store {
 
     await firestore.collection('Sellers').doc(sellerID).update({
       "Storefollowers": number + 1
-    })
+    }).then((value) =>
+
+        Fluttertoast.showToast(
+            msg: "تم متابعة المتجر بنجاح",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: kdark,
+            textColor: Colors.white,
+            fontSize: 16.0
+        )
+
+
+
+    )
         .catchError(print));
   }
 
@@ -808,13 +827,12 @@ return totalpoints;
         ),
       ),
       titleStyle: TextStyle(
-        color: klight
+        color: Colors.black
       ),
     );
     Alert(
       context: context,
       style: alertStyle,
-      type: AlertType.success,
       title: title,
       desc:desc,
       buttons: [

@@ -8,56 +8,28 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:516085197496:android:6d7e473a2ecbdfbda6e24d",
-        "android_client_info": {
-          "package_name": "com.example.flutter_eapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "516085197496-d3iia329gcrunmu5vd7cfd1kdpa54evn.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.flutter_eapp",
-            "certificate_hash": "b1059d7756a1dbdd202cf15c2b76347e179f9788"
-          }
-        },
-        {
-          "client_id": "516085197496-dfp6u7ck2jbvbhdqk4p5cc4kqjjfidka.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBt1XB-8CMOU0kvXJq_OSJ9AUqnOkKAPYQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "516085197496-dfp6u7ck2jbvbhdqk4p5cc4kqjjfidka.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "516085197496-64jm8a0kraeuirlehfk973nqhqlfisc8.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.flutterEapp"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:516085197496:android:4702d28f9ed5a7c2a6e24d",
         "android_client_info": {
           "package_name": "com.mobdev909.caramella"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "516085197496-qb3fh2a2613jihnneiqr56ilktvunisc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobdev909.caramella",
+            "certificate_hash": "1144f0d9b5660be2df7ae3c0d4c96220da5d16c5"
+          }
+        },
+        {
+          "client_id": "516085197496-ucarliaq7r3ovjjpia1l9lt12mpj7vo8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobdev909.caramella",
+            "certificate_hash": "5544503572402d8cf046479b8fded740216fb515"
+          }
+        },
         {
           "client_id": "516085197496-dfp6u7ck2jbvbhdqk4p5cc4kqjjfidka.apps.googleusercontent.com",
           "client_type": 3
