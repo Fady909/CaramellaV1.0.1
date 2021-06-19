@@ -42,7 +42,6 @@ class _AuthPhoneState extends State<AuthPhone> {
   Widget build(BuildContext context) {
     return    Scaffold(
         appBar: AppBar(
-          foregroundColor: klight,
           backgroundColor: klight,
           title: Text("Caramella"),
         ),
