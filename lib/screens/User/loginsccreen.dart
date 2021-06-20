@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_eapp/Provider/Adminmode.dart';
 import 'package:flutter_eapp/Provider/modelhut.dart';
 import 'package:flutter_eapp/constants.dart';
+import 'package:flutter_eapp/screens/User/AuthPhone.dart';
 import 'package:flutter_eapp/screens/User/signupscreen.dart';
 import 'package:flutter_eapp/services/auth.dart';
 import 'package:flutter_eapp/services/store.dart';
@@ -369,18 +370,20 @@ var emailcontroller = TextEditingController();
                     //  Positioned(top: 40, left: 0, child: _backButton()),
                   ],
                 ),
-                GestureDetector(
-                  onTap: (){
-                    Navigator.pushNamed(context, Home.id);
+                Visibility(
+                  visible: widget.fireauth.currentUser != null ? false : true,
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, Home.id);
 
-                  },
-                  child: Padding(
+                    },
+                    child: Padding(
   padding: EdgeInsets.all(20),
   child:   Row(children: [
 
 
 
-  Text('تصفح بدون تسجل الدخول؟'),
+  Text('تصفح بدون تسجيل الدخول؟'),
 
     Icon(Icons.keyboard_return, color: Colors.black,),
 
@@ -388,6 +391,7 @@ var emailcontroller = TextEditingController();
 
   ],),
 ),
+                  ),
                 )
               ],),
             )

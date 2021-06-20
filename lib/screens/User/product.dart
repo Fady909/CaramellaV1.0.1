@@ -1211,17 +1211,12 @@ checkseller();
   addComment(TextEditingController addcomment) {
     if (addcomment.text.isNotEmpty) {
       print(name);
+      fireauth.currentUser == null ? _emptyalert(context, "لا يمكن اضافة تعليق إلا بعد تسجيل الدخول", ""):
+
       store.addcomment(
+
           widget.product, name, addcomment.text, loggeduser.uid, photo);
-      Fluttertoast.showToast(
-              msg: "تم الطلب بنجاح",
-              toastLength: Toast.LENGTH_LONG,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 1,
-              backgroundColor: kdark,
-              textColor: Colors.white,
-              fontSize: 16.0)
-          .then((value) => addcomment.clear());
+         addcomment.clear();
     }
   }
 
@@ -1259,6 +1254,41 @@ else {setState(() {
 
 
 
+}
+_emptyalert(BuildContext context , title, desc) {
+  var alertStyle = AlertStyle(
+    animationType: AnimationType.shrink,
+    isCloseButton: false,
+    isOverlayTapDismiss: false,
+    descStyle: TextStyle(fontWeight: FontWeight.bold),
+    animationDuration: Duration(milliseconds: 250),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8.0),
+      side: BorderSide(
+        color: Colors.grey,
+      ),
+    ),
+    titleStyle: TextStyle(
+        color: Colors.black
+    ),
+  );
+  Alert(
+    context: context,
+    style: alertStyle,
+    title: title,
+    desc:desc,
+    buttons: [
+      DialogButton(
+          child: Text(
+            "موافق",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          color: kdark
+      ),
+
+    ],
+  ).show();
 }
 
 

@@ -171,6 +171,7 @@ class Store {
   }
 
   addcomment(Product products, UserName, Comment, Uid, uphoto) {
+
     firestore.collection("Products").doc(products.pID)
         .collection('Comments')
         .doc()
@@ -184,7 +185,20 @@ class Store {
           "Time": DateTime.now(),
 
 
-        });
+        }).then((value) =>
+        Fluttertoast.showToast(
+            msg: "تم التعليق بنجاح",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: kdark,
+            textColor: Colors.white,
+            fontSize: 16.0)
+
+
+
+
+    );
   }
 
 

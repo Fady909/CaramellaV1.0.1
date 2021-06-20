@@ -768,32 +768,36 @@ Navigator.of(context).pushNamed(UserOrders.id);
 
 //stores
 
-                GestureDetector(
-                  onTap: () {
+                Visibility(
+                  visible :   UID != null ?  true : false,
 
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.fade,
-                        child: FollowedStores(),
-                      ),
-                    );
-                  },
-                  child: Row(
+                  child: GestureDetector(
+                    onTap: () {
 
-                    mainAxisAlignment:MainAxisAlignment.end ,
-                    children: [
-                      Icon(Icons.arrow_back_ios),
-                      Text("المتاجر      ",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontFamily: 'Tajawal',
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: FollowedStores(),
+                        ),
+                      );
+                    },
+                    child: Row(
 
-                              fontWeight: FontWeight.bold)),
+                      mainAxisAlignment:MainAxisAlignment.end ,
+                      children: [
+                        Icon(Icons.arrow_back_ios),
+                        Text("المتاجر      ",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontFamily: 'Tajawal',
 
-                    ],
+                                fontWeight: FontWeight.bold)),
+
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 20),
